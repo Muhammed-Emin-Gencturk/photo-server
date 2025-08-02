@@ -39,7 +39,7 @@ def stream():
     if latest:
         html = f"""
         <h1>📡 Canlı Görüntü</h1>
-        <meta http-equiv="refresh" content="0.2">
+        <meta http-equiv="refresh" content="1">
         <img src="/uploads/{latest}" width="600">
         """
         return html
@@ -49,4 +49,5 @@ def stream():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
