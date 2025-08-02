@@ -31,5 +31,22 @@ def gallery():
 def uploaded_file(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
+@app.route("/stream")
+def stream():
+    files = sorted(os.listdir(UPLOAD_FOLDER), reverse=True)
+    latest = files[0] if files else None
+
+    if latest:
+        html = f"""
+        <h1>📡 Canlı Görüntü</h1>
+        <meta http-equiv="refresh" content="0.2">
+        <img src="/uploads/{latest}" width="600">
+        """
+        return html
+    else:
+        return "<h1>Henüz fotoğraf yok.</h1>"
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
